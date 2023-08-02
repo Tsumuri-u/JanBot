@@ -7,6 +7,7 @@ class Wall:
     dora = []
     uradora = []
 
+    # TODO: rewrite this to accomodate sanma
     def __init__(self, roll=7, akapai=True):
         self.build_wall()
         if akapai:
