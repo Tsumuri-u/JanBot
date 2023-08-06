@@ -34,13 +34,23 @@ class Wall:
         break_tile = ((roll % 4) * 34) - (roll*2)
         dead_wall_end = break_tile + 14
 
-        wall_temp = self.wall[:break_tile]
-        wall_temp.extend(self.wall[dead_wall_end:])
+        wall_temp = self.wall[dead_wall_end:]
+        wall_temp.extend(self.wall[:break_tile])
 
         self.dead_wall = self.wall[break_tile:dead_wall_end]
         self.wall = wall_temp
-        self.wall.reverse()
 
     def reveal_next_dora(self):
         self.dora.append(self.dead_wall[2*len(self.dora) + 4])
         self.uradora.append(self.dead_wall[2*len(self.uradora) + 5])
+
+    def draw_tiles(self, num):
+        tiles = []
+        for i in range(num):
+            tiles.append(self.wall.pop())
+            
+        return tiles
+    
+    # TODO:
+    def draw_dead_wall(self, num):
+        pass
